@@ -1,11 +1,11 @@
 Summary:	IP Calculator
 Name:		ipcalc
-Version:	0.40
+Version:	0.41
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		System/Servers
 URL:		http://jodies.de/ipcalc
-Source0:	http://jodies.de/ipcalc-archive/ipcalc-%{version}.tar.bz2
+Source0:	http://jodies.de/ipcalc-archive/ipcalc-%{version}.tar.gz
 Source1:	ipcalc_cgi.bz2
 BuildArch:	noarch
 
@@ -39,7 +39,7 @@ install -m0755 ipcalc.pl %{buildroot}/var/www/cgi-bin/
 
 %files
 %defattr(-,root,root)
-%doc changelog
+%doc changelog license contributors
 %attr(0755,root,root) %{_bindir}/ipcalc
 %attr(0755,root,root) /var/www/cgi-bin/ipcalc.pl
 
