@@ -8,6 +8,7 @@ URL:		http://jodies.de/ipcalc
 Source0:	http://jodies.de/ipcalc-archive/ipcalc-%{version}.tar.gz
 Source1:	ipcalc_cgi.bz2
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 
 %description
 ipcalc takes an IP address and netmask and calculates the
