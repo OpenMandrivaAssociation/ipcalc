@@ -1,7 +1,7 @@
 Summary:	IP Calculator
 Name:		ipcalc
 Version:	0.41
-Release:	%mkrel 5
+Release:	6
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://jodies.de/ipcalc
