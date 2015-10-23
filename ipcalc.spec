@@ -5,7 +5,6 @@ Release:	1
 License:	GPLv2+
 URL:		https://github.com/nmav/ipcalc
 Source0:	https://github.com/nmav/ipcalc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:		ipcalc-0.1.4-all-info.patch
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(popt)
 Conflicts:	initscripts < 9.64
