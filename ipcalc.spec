@@ -1,83 +1,38 @@
-Summary:	IP Calculator
+Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.41
-Release:	6
+Version:	0.1.4
+Release:	1
 License:	GPLv2+
-Group:		System/Servers
-URL:		http://jodies.de/ipcalc
-Source0:	http://jodies.de/ipcalc-archive/ipcalc-%{version}.tar.gz
-Source1:	ipcalc_cgi.bz2
-BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
+URL:		https://github.com/nmav/ipcalc
+Source0:	https://github.com/nmav/ipcalc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:		ipcalc-0.1.4-all-info.patch
+BuildRequires:	pkgconfig(geoip)
+BuildRequires:	pkgconfig(popt)
+Conflicts:	initscripts < 9.64
+
 
 %description
-ipcalc takes an IP address and netmask and calculates the
-resulting broadcast, network, Cisco wildcard mask, and host
-range. By giving a second netmask, you can design sub- and
-supernetworks. It is also intended to be a teaching tool and
-presents the results as easy-to-understand binary values.
+ipcalc provides a simple way to calculate IP information for a host
+or network. Depending on the options specified, it may be used to provide
+IP network information in human readable format, in a format suitable for
+parsing in scripts, generate random private addresses, resolve an IP address,
+or check the validity of an address.
 
 %prep
-
 %setup -q
-
-bzcat %{SOURCE1} > ipcalc.pl
-perl -pi -e "s|/usr/local/bin|%{_bindir}|g" ipcalc.pl
+%apply_patches
 
 %build
+%setup_compile_flags
+%make LIBPATH=%{_libdir}
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-
-install -d %{buildroot}%{_bindir}
-install -d %{buildroot}/var/www/cgi-bin
-
-install -m0755 ipcalc %{buildroot}%{_bindir}/
-install -m0755 ipcalc.pl %{buildroot}/var/www/cgi-bin/
-
-%clean
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_bindir}
+install -p -m 755 ipcalc %{buildroot}%{_bindir}/
+mkdir -p -m 755 %{buildroot}%{_mandir}/man1
+install -p -m 644 ipcalc.1 %{buildroot}%{_mandir}/man1
 
 %files
-%defattr(-,root,root)
-%doc changelog license contributors
-%attr(0755,root,root) %{_bindir}/ipcalc
-%attr(0755,root,root) /var/www/cgi-bin/ipcalc.pl
-
-
-
-
-%changelog
-* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.41-5mdv2011.0
-+ Revision: 619677
-- the mass rebuild of 2010.0 packages
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 0.41-4mdv2010.0
-+ Revision: 429517
-- rebuild
-
-* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 0.41-3mdv2009.0
-+ Revision: 247247
-- rebuild
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-* Tue Dec 18 2007 Nicolas Vigier <nvigier@mandriva.com> 0.41-1mdv2008.1
-+ Revision: 132424
-- new version
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-
-* Fri Feb 02 2007 Oden Eriksson <oeriksson@mandriva.com> 0.40-1mdv2007.0
-+ Revision: 115943
-- Import ipcalc
-
-* Sun Dec 25 2005 Oden Eriksson <oeriksson@mandriva.com> 0.38-2mdk
-- rebuild
-
-* Fri Oct 29 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 0.38-1mdk
-- initial mandrake package
-
+%doc README.md COPYING
+%{_bindir}/ipcalc
+%{_mandir}/man1/ipcalc.1*
