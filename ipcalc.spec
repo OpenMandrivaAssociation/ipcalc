@@ -1,6 +1,6 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.1.4
+Version:	0.1.6
 Release:	1
 License:	GPLv2+
 URL:		https://github.com/nmav/ipcalc
@@ -26,12 +26,12 @@ or check the validity of an address.
 %make LIBPATH=%{_libdir}
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -p -m 755 ipcalc %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}/bin
+install -p -m 755 ipcalc %{buildroot}/bin/
 mkdir -p -m 755 %{buildroot}%{_mandir}/man1
 install -p -m 644 ipcalc.1 %{buildroot}%{_mandir}/man1
 
 %files
 %doc README.md COPYING
-%{_bindir}/ipcalc
+/bin/ipcalc
 %{_mandir}/man1/ipcalc.1*
