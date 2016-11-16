@@ -1,7 +1,8 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.1.6
+Version:	0.1.8
 Release:	1
+Group:		System/Base
 License:	GPLv2+
 URL:		https://github.com/nmav/ipcalc
 Source0:	https://github.com/nmav/ipcalc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -32,6 +33,6 @@ mkdir -p -m 755 %{buildroot}%{_mandir}/man1
 install -p -m 644 ipcalc.1 %{buildroot}%{_mandir}/man1
 
 %files
-%doc README.md COPYING
+%doc README.md
 /bin/ipcalc
 %{_mandir}/man1/ipcalc.1*
