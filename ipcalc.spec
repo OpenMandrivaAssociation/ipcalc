@@ -1,6 +1,6 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.2.0
+Version:	0.2.3
 Release:	1
 Group:		System/Base
 License:	GPLv2+
@@ -9,7 +9,6 @@ Source0:	https://github.com/nmav/ipcalc/archive/%{version}.tar.gz#/%{name}-%{ver
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(popt)
 Conflicts:	initscripts < 9.64
-
 
 %description
 ipcalc provides a simple way to calculate IP information for a host
@@ -24,7 +23,7 @@ or check the validity of an address.
 
 %build
 %setup_compile_flags
-%make LIBPATH=%{_libdir}
+%make LIBPATH=%{_libdir} USE_GEOIP="yes"
 
 %install
 mkdir -p %{buildroot}/bin
