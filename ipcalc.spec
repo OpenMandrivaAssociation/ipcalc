@@ -1,11 +1,11 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.2.3
-Release:	2
+Version:	0.2.5
+Release:	1
 Group:		System/Base
 License:	GPLv2+
-URL:		https://github.com/nmav/ipcalc
-Source0:	https://github.com/nmav/ipcalc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:		https://gitlab.com/ipcalc/ipcalc
+Source0:	https://gitlab.com/ipcalc/ipcalc/-/archive/%{version}//%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(popt)
 Conflicts:	initscripts < 9.64
@@ -18,12 +18,11 @@ parsing in scripts, generate random private addresses, resolve an IP address,
 or check the validity of an address.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 %setup_compile_flags
-%make LIBPATH=%{_libdir} USE_GEOIP="yes"
+%make_build LIBPATH=%{_libdir} USE_GEOIP="yes"
 
 %install
 mkdir -p %{buildroot}/bin
