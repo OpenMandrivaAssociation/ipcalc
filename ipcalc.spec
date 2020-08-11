@@ -1,6 +1,6 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.4.0
+Version:	0.4.1
 Release:	1
 Group:		System/Base
 License:	GPLv2+
