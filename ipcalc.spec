@@ -1,6 +1,6 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.2.5
+Version:	0.4.0
 Release:	1
 Group:		System/Base
 License:	GPLv2+
@@ -21,7 +21,7 @@ or check the validity of an address.
 %autosetup -p1
 
 %build
-%setup_compile_flags
+%set_build_flags
 %make_build LIBPATH=%{_libdir} USE_GEOIP="yes"
 
 %install
