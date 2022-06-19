@@ -1,6 +1,6 @@
 Summary:	IP network address calculator
 Name:		ipcalc
-Version:	0.4.1
+Version:	1.0.1
 Release:	1
 Group:		System/Base
 License:	GPLv2+
@@ -8,6 +8,7 @@ URL:		https://gitlab.com/ipcalc/ipcalc
 Source0:	https://gitlab.com/ipcalc/ipcalc/-/archive/%{version}//%{name}-%{version}.tar.bz2
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(popt)
+BuildRequires:	ronn
 Conflicts:	initscripts < 9.64
 
 %description
@@ -25,12 +26,13 @@ or check the validity of an address.
 %make_build LIBPATH=%{_libdir} USE_GEOIP="yes"
 
 %install
-mkdir -p %{buildroot}/bin
-install -p -m 755 ipcalc %{buildroot}/bin/
+mkdir -p %{buildroot}%{_bindir}
+install -p -m 755 ipcalc %{buildroot}%{_bindir}/
 mkdir -p -m 755 %{buildroot}%{_mandir}/man1
+ronn --pipe -r ipcalc.1.md >ipcalc.1
 install -p -m 644 ipcalc.1 %{buildroot}%{_mandir}/man1
 
 %files
 %doc README.md
-/bin/ipcalc
+%{_bindir}/ipcalc
 %{_mandir}/man1/ipcalc.1*
