@@ -29,6 +29,8 @@ or check the validity of an address.
 mkdir -p %{buildroot}%{_bindir}
 install -p -m 755 ipcalc %{buildroot}%{_bindir}/
 mkdir -p -m 755 %{buildroot}%{_mandir}/man1
+# Make sure we don't hit "invalid byte sequence in US-ASCII" in ronn
+export LC_ALL=en_US.UTF-8
 ronn --pipe -r ipcalc.1.md >ipcalc.1
 install -p -m 644 ipcalc.1 %{buildroot}%{_mandir}/man1
 
