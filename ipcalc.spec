@@ -1,7 +1,7 @@
 Summary:	IP network address calculator
 Name:		ipcalc
 Version:	1.0.1
-Release:	1
+Release:	2
 Group:		System/Base
 License:	GPLv2+
 URL:		https://gitlab.com/ipcalc/ipcalc
