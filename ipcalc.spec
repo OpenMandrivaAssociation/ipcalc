@@ -6,6 +6,7 @@ Group:		System/Base
 License:	GPLv2+
 URL:		https://gitlab.com/ipcalc/ipcalc
 Source0:	https://gitlab.com/ipcalc/ipcalc/-/archive/%{version}//%{name}-%{version}.tar.bz2
+BuildRequires:	make
 BuildRequires:	pkgconfig(geoip)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	ronn
